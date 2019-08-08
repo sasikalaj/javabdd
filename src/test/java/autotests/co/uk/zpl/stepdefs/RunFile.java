@@ -1,10 +1,10 @@
 
-package co.uk.sainsburys.tuclothing.stepdefs;
+package autotests.co.uk.zpl.stepdefs;
 
 
-import co.uk.sainsburys.tuclothing.setup.StandaloneClient;
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+// import autotests.co.uk.zpl.setup.StandaloneClient;
+import io.cucumber.junit.CucumberOptions;
+import io.cucumber.junit.Cucumber;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
@@ -14,10 +14,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         strict = false,
-        format = { "pretty",
+        plugin = { "pretty",
                 "json:target/cucumber.json",
                 "html:target/site/cucumber-pretty"},
-        glue = "co.uk.sainsburys.tuclothing.stepdefs" ,
+        glue = "autotests.co.uk.zpl.stepdefs" ,
         features="src/test/resources/features",
         tags = {"@solo"}
 )
