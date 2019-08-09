@@ -6,7 +6,7 @@ Feature: Homepage search filters
 
 Background: 
 Given I am already in Homepage
-
+@solo
  Scenario: Basic channels in the Homepage 
  Then I see for sale channel tab on the homepage 
  When I enter London in the location field
