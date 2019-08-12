@@ -113,7 +113,11 @@ public class BrowserFactory
                 break;
             case "chrome":
                 // LOG.info("browser chrome");
-                ChromeDriverManager.getInstance().setup();
+                //  ChromeDriverManager.getInstance().setup(); 
+                // if we use this maven downloads the latest version of chrome which 77 beta version and caches that into /Users/user.name/.m2/repository/webdriver
+                // So use the below commands to pick it up from a specified location 
+//               System.setProperty("user.dir", "/Users/sasikala.jayavel/Documents/Projects/javabdd/");
+//               System.setProperty("webdriver.chrome.driver", "/Users/sasikala.jayavel/Documents/Projects/javabdd/chromedriver");
                 driver = new ChromeDriver();
                 break;
             case "safari":
