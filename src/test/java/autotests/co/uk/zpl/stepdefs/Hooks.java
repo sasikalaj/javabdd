@@ -43,22 +43,24 @@ public class Hooks {
     public  void set_Up()
     {
         webdriver.manage().deleteAllCookies();
-        webdriver.get(config.homePageURL);
+        System.out.println("Inside hooks set_up");
     }
 
     @After("~@nologout")
     public void logout_Step()
     {
-        webdriver.get(config.homePageURL);
-          if (webdriver.findElement(By.cssSelector(".logged_in")).getText().toLowerCase().contains("hello "))
-          {
-              webdriver.findElement(By.linkText("Log Out")).click();
-          }
+        System.out.println("Inside hooks logout_step"); 
+//        webdriver.get(config.homePageURL);
+//          if (webdriver.findElement(By.cssSelector(".logged_in")).getText().toLowerCase().contains("hello "))
+//          {
+//              webdriver.findElement(By.linkText("Log Out")).click();
+//          }
     }
 
     @After()
     public void tearDown(  Scenario scenario) throws IOException {
         if (scenario.isFailed()) {
+            System.out.println("Inside hooks logout_step");
             final byte[] screenshot = ((TakesScreenshot) webdriver)
                     .getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenshot, "image/png"); //stick it in the report

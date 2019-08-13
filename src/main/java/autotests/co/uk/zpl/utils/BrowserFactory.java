@@ -87,7 +87,7 @@ public class BrowserFactory
             case "dev":
                 return  "https://www.xxx.xxx.co.uk";
             case "qa":
-                return "https://www.zoopla.co.uk";
+                return "https://www.qa.zoopla.co.uk";
             case "stage":
                 return "https://www.xxx.xxx.co.uk";
             case "prod":

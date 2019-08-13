@@ -16,6 +16,7 @@ import autotests.co.uk.zpl.utils.WaitUtils;
 import java.io.File;
 import java.io.IOException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by sasikala.jayavel on 18/05/2016.
@@ -46,27 +47,40 @@ public class CommonSteps {
     @Then("^I should be presented with the (.*?) page$")
     public void assert_Pages( String page) {
 
-        String expected_URL = "";
         WaitUtils.waitForPageLoad(webdriver,20000,10);
 
-        switch (page.toLowerCase()) {
-            case "login":
-                expected_URL = config.loginPageURL;
-                WaitUtils.wait_For_Visibility_Of_Element(webdriver, By.id("j_username"),10);
-                WaitUtils.fluent_Wait_For_Partial_URL_Check(webdriver,15,1,expected_URL);
-                ((JavascriptExecutor) webdriver).executeScript("$('input').show()");
-                break;
-            default:
-                throw new IllegalArgumentException(page + " not valid argument");
-        }
+        // switch (page.toLowerCase()) {
+        //     case "login":
+        //         expected_URL = config.loginPageURL;
+        //         WaitUtils.wait_For_Visibility_Of_Element(webdriver, By.id("j_username"),10);
+        //         WaitUtils.fluent_Wait_For_Partial_URL_Check(webdriver,15,1,expected_URL);
+        //         ((JavascriptExecutor) webdriver).executeScript("$('input').show()");
+        //         break;
+        //     default:
+        //         // throw new IllegalArgumentException(page + " not valid argument");
+        // }
 
-        WaitUtils.fluent_Wait_For_Partial_URL_Check(webdriver,30,1,expected_URL);
+
+        WaitUtils.fluent_Wait_For_Partial_URL_Check(webdriver,30,1,page);
 
         String current_Url = webdriver.getCurrentUrl();
 
         assertEquals("Current URL not same as Expected URL " ,
-                      expected_URL.toLowerCase() ,
+                      page.toLowerCase() ,
                       current_Url.toLowerCase() ) ;
+    }
+
+    @Then("^Url should contain (.*?)$")
+    public void assert_URL_Content( String expected_URL) {
+
+        WaitUtils.waitForPageLoad(webdriver,20000,10);
+
+        WaitUtils.fluent_Wait_For_Partial_URL_Check(webdriver,30,1, expected_URL);
+
+        String current_Url = webdriver.getCurrentUrl();
+
+        assertTrue("Current URL does not contain expected url " ,
+                      current_Url.toLowerCase().contains(expected_URL)) ;
     }
 }
 
