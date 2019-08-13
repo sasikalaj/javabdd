@@ -24,7 +24,4 @@ public class HomePage extends Pages {
         super(driver);
     }
 
-    @Autowired
-    Config config;
-
 }

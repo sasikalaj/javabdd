@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import static junit.framework.TestCase.assertTrue;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by sasikala.jayavel on 09/08/2019.
@@ -25,6 +26,9 @@ public abstract class Pages {
 
     // private static final Logger LOG = Logger.getLogger(Pages.class);
     public WebDriver driver;
+
+    @Autowired
+    Config config;
 
     public Pages( WebDriver driver) {
 

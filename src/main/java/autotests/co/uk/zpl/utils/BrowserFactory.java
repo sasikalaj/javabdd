@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 
 // import java.io.File;
 import java.util.concurrent.TimeUnit;
-// import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 
 /**
  * Created by Sasikala on 9/8/2019
@@ -29,18 +29,14 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class BrowserFactory
 {
-    // private static final Logger LOG = Logger.getLogger(BrowserFactory.class);
-    // private static final String ENV = getSystemProperty("environment");
-    private static final String ENV = "qa";
+    private static final Logger LOG = Logger.getLogger(BrowserFactory.class);
     private WebDriver driver;
-
-    public static final String BASE_URL      = setEnvironment();
-    public static final String PROD_BASE_URL = "https://www.qa.xxx.co.uk";
-    public static final String BROWSER_NAME  = "chrome";
-    public static final String USER_DIR      = getSystemProperty("user.dir");
-    // public static final String BROWSER_NAME  = getSystemProperty("browser");
-    // public static final String USER_DIR      = getSystemProperty("user.dir");
-
+    private static final String ENV          = getSystemProperty("environment");
+    public static final String BROWSER_NAME  = getSystemProperty("browser");
+    public static final String USER_DIR      = getSystemProperty("userdir");
+    public static final String PROD_BASE_URL = getSystemProperty("liveurl");
+    public static final String BASE_URL      = setBaseURL();
+    
 
     @Bean(destroyMethod = "quit")
 //  @Scope("cucumber-glue") Never glue the driver to the cucumber, this will close the browser for every cucumber scenario
@@ -48,7 +44,6 @@ public class BrowserFactory
     {
         if (driver == null)
         {
-            System.out.println("Inside the getbrowser on the brosers factory");
             setDriver();
         }
 
@@ -58,18 +53,24 @@ public class BrowserFactory
     private static String getSystemProperty(final String propertyId)
     {
         String result = System.getProperty(propertyId);
-
+     
         if (result == null)
         {
             // Default values if not set.
             switch (propertyId)
             {
                 case "environment":
-                    result = "dev";
+                    result = "qa";
                     break;
                 case "browser":
-                    result = "firefox";
+                    result = "chrome";
                     break;
+                case "userdir":
+                    result =  "/Users/sasikala.jayavel/Documents/Projects/javabdd/";  
+                    break; 
+                case "liveurl":
+                    result =  "https://www.xxx.co.uk";  
+                    break;     
                 default:
                     break;
             }
@@ -78,50 +79,50 @@ public class BrowserFactory
         return result;
     }
 
-    private static String setEnvironment()
+    private static String setBaseURL()
     {
+        System.out.println("Inside the baseURL on the browsers factory");
         switch (ENV.toLowerCase())
         {
             case "dev":
                 return  "https://www.xxx.xxx.co.uk";
             case "qa":
-                return "https://www.qa.zoopla.co.uk";
+                return "https://www.zoopla.co.uk";
             case "stage":
-                return "https://www.xx.xxx.co.uk";
+                return "https://www.xxx.xxx.co.uk";
             case "prod":
-                return "https://www.xxxx.co.uk";
+                return "https://www.xxx.xxx.co.uk";
             default:
-                // LOG.info("Could not find a predefined URL for ENV " + ENV + ". Using: " + BASE_URL);
-                return "https://www." + ENV + ".xxx.co.uk";
+                LOG.info("Could not find a predefined URL for ENV " + ENV + ". Using: " + BASE_URL);
+                return "https://www." + ENV + ".xxx.xxx.co.uk";
         }
     }
 
     private void setDriver()
     {
-        // Object LOG;
+        System.out.println("Inside the setdriver on the browsers factory");
         switch (BROWSER_NAME.toLowerCase()) {
             case "firefox":
-                // LOG.info("browser firefox");
+                LOG.info("browser firefox");
                 FirefoxDriverManager.getInstance().setup();
                 driver = new FirefoxDriver();
                 break;
             case "ie":
-                // LOG.info("browser ie");
+                LOG.info("browser ie");
                 InternetExplorerDriverManager.getInstance().setup();
                 DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
                 driver = new InternetExplorerDriver(caps);
                 break;
             case "chrome":
-                // LOG.info("browser chrome");
+                LOG.info("browser chrome");
                 //  ChromeDriverManager.getInstance().setup(); 
                 // if we use this maven downloads the latest version of chrome which 77 beta version and caches that into /Users/user.name/.m2/repository/webdriver
                 // So use the below commands to pick it up from a specified location 
-//               System.setProperty("user.dir", "/Users/sasikala.jayavel/Documents/Projects/javabdd/");
-//               System.setProperty("webdriver.chrome.driver", "/Users/sasikala.jayavel/Documents/Projects/javabdd/chromedriver");
+                System.setProperty("webdriver.chrome.driver", USER_DIR + "chromedriver");
                 driver = new ChromeDriver();
                 break;
             case "safari":
-                // LOG.info("browser safari");
+                LOG.info("browser safari");
                 driver = new SafariDriver();
                 break;
             case "phantomjs":

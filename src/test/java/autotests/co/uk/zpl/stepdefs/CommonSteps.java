@@ -35,51 +35,12 @@ public class CommonSteps {
     @Autowired
     Config config;
 
-    public CommonSteps()
-    {
-
-    }
 
     @Autowired
     public CommonSteps( WebDriver driver) {
 
         this.webdriver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    @Before
-    public  void set_Up()
-    {
-        webdriver.manage().deleteAllCookies();
-        webdriver.get(config.homePageURL);
-    }
-
-    @After("~@nologout")
-    public void logout_Step()
-    {
-        webdriver.get(config.homePageURL);
-          if (webdriver.findElement(By.cssSelector(".logged_in")).getText().toLowerCase().contains("hello "))
-          {
-              webdriver.findElement(By.linkText("Log Out")).click();
-          }
-    }
-
-    @After()
-    public void tearDown(  Scenario scenario) throws IOException {
-        if (scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) webdriver)
-                    .getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png"); //stick it in the report
-            File scrFile = ((TakesScreenshot)webdriver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(scrFile, new File("TearDownScreenShot.jpg"));
-
-        }
-    }
-
-    @AfterClass
-    public void clearSession() {
-        // LOG.info("Inside the browser quit session");
-        browserFactory.getBrowser().quit();
     }
 
     @Then("^I should be presented with the (.*?) page$")
@@ -90,7 +51,7 @@ public class CommonSteps {
 
         switch (page.toLowerCase()) {
             case "login":
-                // expected_URL = config.loginPageURL;
+                expected_URL = config.loginPageURL;
                 WaitUtils.wait_For_Visibility_Of_Element(webdriver, By.id("j_username"),10);
                 WaitUtils.fluent_Wait_For_Partial_URL_Check(webdriver,15,1,expected_URL);
                 ((JavascriptExecutor) webdriver).executeScript("$('input').show()");

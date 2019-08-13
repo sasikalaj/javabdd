@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Created by sasikala.jayavel on 25/11/2016.
  */
 public abstract class AbstractSteps {
+
+    @Autowired
+    public Config config;
+
     @Autowired
     public HomePage homePage;
 
     @Autowired
-    public Config config;
+    public Hooks hooks; 
 
 }
 

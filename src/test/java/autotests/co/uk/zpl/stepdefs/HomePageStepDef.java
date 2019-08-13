@@ -3,9 +3,6 @@ package autotests.co.uk.zpl.stepdefs;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.Given;
-import autotests.co.uk.zpl.pages.*;
-// import org.openqa.selenium.By;
-import org.springframework.beans.factory.annotation.Autowired;
 import autotests.co.uk.zpl.utils.WaitUtils;
 // import static org.junit.Assert.assertTrue;
 
@@ -14,17 +11,7 @@ import autotests.co.uk.zpl.utils.WaitUtils;
  * Created by sasikala.jayavel on 07/08/2019.
  * This class contains stepdefs related to HomePage
  */
-public class HomePageStepDef {
-
-    @Autowired
-    CommonSteps commonSteps;
-
-    @Autowired
-    Config config;
-
-    @Autowired
-    HomePage homePage;
-
+public class HomePageStepDef extends AbstractSteps {
 
     // @When("^I click the (.*?) link in the (footer|header)")
     // public void click_Footer_Link(String linkType, String linksection) {

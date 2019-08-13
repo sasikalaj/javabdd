@@ -13,6 +13,7 @@ public  class Config {
     public  String prod_Base_URL = BrowserFactory.PROD_BASE_URL;
 
     public  String homePageURL             = base_URL + "/";
+    public  String loginPageURL            = base_URL + "/signin";
     
     public   String named_Day_Delivery_Cost = "£4.95";
     
