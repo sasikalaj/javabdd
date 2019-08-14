@@ -13,6 +13,6 @@
 
     <bean class="autotests.co.uk.zpl.pages.HomePage" scope="cucumber-glue" />
     <bean class="autotests.co.uk.zpl.pages.Config" scope="cucumber-glue" />
-    <bean class="autotests.co.uk.zpl.stepdefs.CommonSteps" scope="cucumber-glue" />
-    <bean class="autotests.co.uk.zpl.stepdefs.Hooks" scope="cucumber-glue" />
+    <bean class="autotests.co.uk.zpl.pages.LoginPage" scope="cucumber-glue" />
+<!--    <bean class="autotests.co.uk.zpl.stepdefs.Hooks" scope="cucumber-glue" />-->
 </beans>

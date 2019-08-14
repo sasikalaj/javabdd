@@ -5,9 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by sasikala.jayavel on 17/05/2016.
+ * * Created by sasikalaj45 07/08/2019.
  */
-public  class Config {
+public class Config {
 
     public  String base_URL = BrowserFactory.BASE_URL;
     public  String prod_Base_URL = BrowserFactory.PROD_BASE_URL;

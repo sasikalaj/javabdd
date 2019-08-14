@@ -3,6 +3,7 @@ package autotests.co.uk.zpl.pages;
 import autotests.co.uk.zpl.utils.WaitUtils;
 import org.apache.commons.io.FileUtils;
 // import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ import static junit.framework.TestCase.assertTrue;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Created by sasikala.jayavel on 09/08/2019.
+ * * Created by sasikalaj45 07/08/2019.
  * This is a general page which has fucntionalities for
  * Page factory
  * Windows handle
@@ -24,7 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Component
 public abstract class Pages {
 
-    // private static final Logger LOG = Logger.getLogger(Pages.class);
+    private static final Logger LOG = Logger.getLogger(Pages.class);
     public WebDriver driver;
 
     @Autowired
@@ -34,6 +35,7 @@ public abstract class Pages {
 
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        System.out.println("Inside pages contrcutor");
     }
 
 

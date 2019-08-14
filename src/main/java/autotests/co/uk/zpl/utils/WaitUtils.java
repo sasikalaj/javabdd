@@ -1,9 +1,9 @@
 package autotests.co.uk.zpl.utils;
 
-import autotests.co.uk.zpl.pages.Pages;
 import com.google.common.base.Function;
-// import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Sasikala on 09/08/2016
+ * * Created by sasikalaj45 07/08/2019.
  * utility functions to
  * -- check for text available text  present
  * -- accept and close alert
@@ -23,9 +23,9 @@ import java.util.concurrent.TimeUnit;
  * */
 public class WaitUtils {
 
-    // private static final Logger LOG = Logger.getLogger(WaitUtils.class);
-    @Autowired
-    Pages pages;
+    private static final Logger LOG = Logger.getLogger(WaitUtils.class);
+
+    public WebDriver driver;
 
     public void implicitWait(WebDriver driver, long time) {
         driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
@@ -41,7 +41,6 @@ public class WaitUtils {
 
     public boolean is_Element_Present(WebDriver driver, WebElement element) {
         try {
-
             element.isDisplayed();
             return true;
         } catch (NoSuchElementException e) {
@@ -50,7 +49,7 @@ public class WaitUtils {
     }
 
     public boolean is_Text_Available(String text) {
-        return pages.driver.getPageSource().contains(text);
+        return driver.getPageSource().contains(text);
     }
 
     public void wait_For_Element_toBe_clickable(WebDriver driver, WebElement element, long time) {
@@ -76,7 +75,7 @@ public class WaitUtils {
         Wait<WebDriver> wait = new WebDriverWait(driver, timeout_In_Seconds, sleeptime_In_Milli_Seconds);
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply(WebDriver driver) {
-                // LOG.info("Current Window State : " + String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState")));
+                 LOG.info("Current Window State : " + String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState")));
                 return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
                         .equals("complete");
             }
@@ -95,7 +94,7 @@ public class WaitUtils {
         wait.until(new Function<WebElement, Boolean>() {
             @Override
             public Boolean apply(WebElement element) {
-//                LOG.info("Element displayed? : " + element.isDisplayed());
+                LOG.info("Element displayed? : " + element.isDisplayed());
                 return element.isDisplayed();
             }
         });
@@ -134,7 +133,7 @@ public class WaitUtils {
         wait.until(new Function<WebElement, Boolean>() {
             @Override
             public Boolean apply(WebElement element) {
-//                LOG.info("Element Enabled? : " + element.isEnabled());
+                LOG.info("Element Enabled? : " + element.isEnabled());
                 return element.isEnabled();
             }
         });
@@ -151,7 +150,7 @@ public class WaitUtils {
         wait.until(new Function<WebDriver, Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {
-                // LOG.info("Current URL : " + driver.getCurrentUrl().toLowerCase());
+                 LOG.info("Current URL : " + driver.getCurrentUrl().toLowerCase());
                 return driver.getCurrentUrl().toLowerCase().contains(expected_URL.toLowerCase());
             }
         });
@@ -167,7 +166,7 @@ public class WaitUtils {
         wait.until(new Function<WebElement, Boolean>() {
             @Override
             public Boolean apply(WebElement element) {
-//                LOG.info("Element style value : " + element.getAttribute("style"));
+                LOG.info("Element style value : " + element.getAttribute("style"));
                 return element.getAttribute(attribute).equals(expected_Attribute_Value);
             }
         });
@@ -184,7 +183,7 @@ public class WaitUtils {
         wait.until(new Function<WebElement, Boolean>() {
             @Override
             public Boolean apply(WebElement element) {
-                // LOG.info("Element text value : " + element.getText());
+                LOG.info("Element text value : " + element.getText());
                 return element.getText().toLowerCase().contains(expected_Text.toLowerCase());
             }
         });
@@ -201,7 +200,7 @@ public class WaitUtils {
         wait.until(new Function<By, Boolean>() {
             @Override
             public Boolean apply(By by) {
-                // LOG.info("Element text value : " + driver.findElement(by).getText());
+                LOG.info("Element text value : " + driver.findElement(by).getText());
                 return driver.findElement(by).getText().toLowerCase().trim().contains(expected_Text.toLowerCase().trim());
             }
         });
@@ -214,12 +213,12 @@ public class WaitUtils {
                 .withTimeout(timeOut, TimeUnit.SECONDS)
                 .pollingEvery(pollingTime, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
-        // LOG.info("inside iframe size ");
+         LOG.info("inside iframe size ");
 
         wait.until(new Function<WebDriver, Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {
-//                LOG.info("size " +  driver.findElements(by).size()) ;
+                LOG.info("size " +  driver.findElements(by).size()) ;
                 return driver.findElements(by).size() > no_Of_Iframes ;
             }
         });
@@ -232,12 +231,12 @@ public class WaitUtils {
                 .withTimeout(timeOut, TimeUnit.SECONDS)
                 .pollingEvery(pollingTime, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
-        // LOG.info("inside no of windows size  ");
+         LOG.info("inside no of windows size  ");
 
         wait.until(new Function<WebDriver, Boolean>() {
             @Override
             public Boolean apply(WebDriver driver) {
-                // LOG.info("size " +  driver.getWindowHandles().size()) ;
+                LOG.info("size " +  driver.getWindowHandles().size()) ;
                 return driver.getWindowHandles().size() == no_Of_Windows ;
             }
         });

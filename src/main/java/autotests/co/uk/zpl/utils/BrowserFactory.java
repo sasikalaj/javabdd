@@ -16,13 +16,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-// import java.io.File;
 import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 
 /**
- * Created by Sasikala on 9/8/2019
+ * * Created by sasikalaj45 07/08/2019.
  * utility functions to
  * -- create Webdriver instance for respective browser
  */
@@ -66,7 +64,7 @@ public class BrowserFactory
                     result = "chrome";
                     break;
                 case "userdir":
-                    result =  "/Users/sasikala.jayavel/Documents/Projects/javabdd/";  
+                    result =  "/Users/sasikala.jayavel/Documents/Projects/javabdd/";
                     break; 
                 case "liveurl":
                     result =  "https://www.xxx.co.uk";  
@@ -87,7 +85,7 @@ public class BrowserFactory
             case "dev":
                 return  "https://www.xxx.xxx.co.uk";
             case "qa":
-                return "https://www.qa.zoopla.co.uk";
+                return "https://www.zoopla.co.uk";
             case "stage":
                 return "https://www.xxx.xxx.co.uk";
             case "prod":

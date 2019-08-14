@@ -11,12 +11,11 @@ import org.openqa.selenium.WebElement;
 
 
 /**
- * Created by sasikala.jayavel on 07/08/2019.
+ * Created by sasikalaj45 07/08/2019.
  * This class contains stepdefs related to HomePage
  */
 public class HomePageStepDef extends AbstractSteps {
 
-    
 @Given("^I am already in Homepage$")
 public void i_am_already_in_Homepage() throws Throwable {
     try
@@ -30,7 +29,7 @@ public void i_am_already_in_Homepage() throws Throwable {
         WaitUtils.waitForPageLoad(homePage.driver, 1, 1);
         assertEquals("Actual url does not match expected URL", 
                      config.homePageURL,
-                     homePage.driver.getCurrentUrl().toLowerCase().trim()) ; 
+                     driver.getCurrentUrl().toLowerCase().trim()) ;
 }
 
 @Then("^I see for sale channel tab on the homepage$")
@@ -49,6 +48,8 @@ public void i_enter_London_in_the_location_field(String location) throws Throwab
 
 @When("^I hit the search button$")
 public void i_hit_the_search_button() throws Throwable {
-    homePage.enter_search(); 
+    loginPage.input_name("Uxbridge");
+    homePage.enter_search();
+
 }
 }
