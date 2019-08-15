@@ -25,7 +25,7 @@ public class WaitUtils {
 
     private static final Logger LOG = Logger.getLogger(WaitUtils.class);
 
-    public WebDriver driver;
+    public WebDriver webDriver;
 
     public void implicitWait(WebDriver driver, long time) {
         driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
@@ -49,7 +49,8 @@ public class WaitUtils {
     }
 
     public boolean is_Text_Available(String text) {
-        return driver.getPageSource().contains(text);
+        System.out.println("Driver hash in waitutils : " + webDriver);
+        return webDriver.getPageSource().contains(text);
     }
 
     public void wait_For_Element_toBe_clickable(WebDriver driver, WebElement element, long time) {

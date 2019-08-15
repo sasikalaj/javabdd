@@ -11,6 +11,7 @@
     <context:annotation-config/>
     <context:component-scan base-package="autotests.co.uk.zpl" />
 
+<!--    <bean class="autotests.co.uk.zpl.pages.BasePage" scope="cucumber-glue" />-->
     <bean class="autotests.co.uk.zpl.pages.HomePage" scope="cucumber-glue" />
     <bean class="autotests.co.uk.zpl.pages.Config" scope="cucumber-glue" />
     <bean class="autotests.co.uk.zpl.pages.LoginPage" scope="cucumber-glue" />

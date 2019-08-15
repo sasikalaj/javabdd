@@ -85,7 +85,7 @@ public class BrowserFactory
             case "dev":
                 return  "https://www.xxx.xxx.co.uk";
             case "qa":
-                return "https://www.zoopla.co.uk";
+                return "https://www.google.com";
             case "stage":
                 return "https://www.xxx.xxx.co.uk";
             case "prod":
@@ -154,6 +154,7 @@ public class BrowserFactory
                 driver = new FirefoxDriver();
         }
 
+        System.out.println("Driver hash in browser factory: " + driver);
         driver.get(BASE_URL);
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);

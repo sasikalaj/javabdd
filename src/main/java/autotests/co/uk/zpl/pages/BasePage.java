@@ -2,6 +2,7 @@ package autotests.co.uk.zpl.pages;
 
 import autotests.co.uk.zpl.utils.WaitUtils;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.support.FindBy;
 // import org.apache.log4j.Logger;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
@@ -22,89 +23,89 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Disable overlay
  */
 
-@Component
-public abstract class Pages {
 
-    private static final Logger LOG = Logger.getLogger(Pages.class);
-    public WebDriver driver;
+public abstract class BasePage {
+
+    private static final Logger LOG = Logger.getLogger(BasePage.class);
+    public WebDriver webDriver;
 
     @Autowired
     Config config;
 
-    public Pages( WebDriver driver) {
-
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public BasePage( WebDriver webDriver) {
+        System.out.println("Driver hash in BasePage: " + webDriver);
+        this.webDriver = webDriver;
+        PageFactory.initElements(webDriver, this);
         System.out.println("Inside pages contrcutor");
     }
 
 
     public WebElement findById(String element_locator) {
-        return driver.findElement(By.id(element_locator));
+        return webDriver.findElement(By.id(element_locator));
     }
 
     public WebElement findByXpath(String element_locator) {
-        return driver.findElement(By.xpath(element_locator));
+        return webDriver.findElement(By.xpath(element_locator));
     }
 
     public WebElement findByCSS(String element_locator) {
-        return driver.findElement(By.cssSelector(element_locator));
+        return webDriver.findElement(By.cssSelector(element_locator));
     }
 
     public WebElement findByName(String element_locator) {
-        return driver.findElement(By.name(element_locator));
+        return webDriver.findElement(By.name(element_locator));
     }
 
     public WebElement findByLinkText(String element_locator) {
-        return driver.findElement(By.linkText(element_locator));
+        return webDriver.findElement(By.linkText(element_locator));
     }
 
     public WebElement findByPartialLinkText(String element_locator) {
-        return driver.findElement(By.partialLinkText(element_locator));
+        return webDriver.findElement(By.partialLinkText(element_locator));
     }
 
     public WebElement findByClassName(String element_locator) {
-        return driver.findElement(By.className(element_locator));
+        return webDriver.findElement(By.className(element_locator));
     }
 
     public WebElement findByTagName(String element_locator) {
-        return driver.findElement(By.tagName(element_locator));
+        return webDriver.findElement(By.tagName(element_locator));
     }
 
     public List<WebElement> findsById(String element_locator) {
-        return driver.findElements(By.id(element_locator));
+        return webDriver.findElements(By.id(element_locator));
     }
 
     public List<WebElement> findsByXpath(String element_locator) {
-        return driver.findElements(By.xpath(element_locator));
+        return webDriver.findElements(By.xpath(element_locator));
     }
 
     public List<WebElement> findsByCSS(String element_locator) {
-        return driver.findElements(By.cssSelector(element_locator));
+        return webDriver.findElements(By.cssSelector(element_locator));
     }
 
     public List<WebElement> findsByName(String element_locator) {
-        return driver.findElements(By.name(element_locator));
+        return webDriver.findElements(By.name(element_locator));
     }
 
     public List<WebElement> findsByLinkText(String element_locator) {
-        return driver.findElements(By.linkText(element_locator));
+        return webDriver.findElements(By.linkText(element_locator));
     }
 
     public List<WebElement> findsByPartialLinkText(String element_locator) {
-        return driver.findElements(By.partialLinkText(element_locator));
+        return webDriver.findElements(By.partialLinkText(element_locator));
     }
 
     public List<WebElement> findsByClassName(String element_locator) {
-        return driver.findElements(By.className(element_locator));
+        return webDriver.findElements(By.className(element_locator));
     }
 
     public List<WebElement> findsByTagName(String element_locator) {
-        return driver.findElements(By.tagName(element_locator));
+        return webDriver.findElements(By.tagName(element_locator));
     }
 
     public WebElement findHeader_h1() {
-        return driver.findElement(By.tagName("h1"));
+        return webDriver.findElement(By.tagName("h1"));
     }
 
     public void disable_TopNav_Overlay() {
@@ -120,7 +121,7 @@ public abstract class Pages {
         try {
 
             Thread.sleep(100);
-            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) webDriver;
             for (int i = 1; i < 11; i++) {
                 jsExecutor.executeScript("return document.getElementsByClassName('Lb')[0].remove()");
             }
@@ -131,20 +132,20 @@ public abstract class Pages {
 
     public boolean get_Windows_Handle_If_Any(String ScreenName) {
 
-        String current_Window_Name = driver.getWindowHandle();
+        String current_Window_Name = webDriver.getWindowHandle();
 
-        WaitUtils.fluent_wait_for_NewWindow_To_Load(driver,10,1,2);
+        WaitUtils.fluent_wait_for_NewWindow_To_Load(webDriver,10,1,2);
 
-        Set<String> windows_List = driver.getWindowHandles();
+        Set<String> windows_List = webDriver.getWindowHandles();
 
         for (String a : windows_List) {
             if (!a.toLowerCase().contains(current_Window_Name.toLowerCase())) {
-                driver.switchTo().window(a);
+                webDriver.switchTo().window(a);
                 // LOG.info("new Window " + driver.getCurrentUrl().toLowerCase().trim());
-                WaitUtils.fluent_Wait_For_Partial_URL_Check(driver, 15, 1, ScreenName);
-                boolean current_Url_Matches = driver.getCurrentUrl().toLowerCase().trim().contains(ScreenName.toLowerCase().trim());
-                driver.close();
-                driver.switchTo().window(current_Window_Name);
+                WaitUtils.fluent_Wait_For_Partial_URL_Check(webDriver, 15, 1, ScreenName);
+                boolean current_Url_Matches = webDriver.getCurrentUrl().toLowerCase().trim().contains(ScreenName.toLowerCase().trim());
+                webDriver.close();
+                webDriver.switchTo().window(current_Window_Name);
                 return current_Url_Matches;
             }
 
@@ -172,7 +173,7 @@ public abstract class Pages {
     public void take_Screenshot(String filename)  {
 
         try {
-            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scrFile, new File( filename + ".jpg"));
         } catch (IOException e) {
             throw new RuntimeException("ScreenShot Error" + e);
@@ -180,17 +181,17 @@ public abstract class Pages {
     }
 
     public void browser_Refresh () {
-        driver.navigate().refresh();
+        webDriver.navigate().refresh();
     }
 
     public void get_URL(String Url)
     {
-        driver.get(Url);
+        webDriver.get(Url);
     }
 
     public void switch_To_Iframe_Id(String frame_Id)
     {
-        driver.switchTo().frame(frame_Id);
+        webDriver.switchTo().frame(frame_Id);
     }
 
 }

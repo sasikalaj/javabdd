@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * This class includes
  * --Homepage functions
  */
-public class LoginPage extends Pages{
+public class LoginPage extends BasePage{
 
     @FindBy(id  = "search-input-location")
     public WebElement name;
@@ -23,9 +23,9 @@ public class LoginPage extends Pages{
     public WebElement submit_button;
 
     @Autowired
-    public LoginPage (WebDriver driver) {
+    public LoginPage (WebDriver webDriver) {
 
-        super(driver);
+        super(webDriver);
         System.out.println("Inside Login driver");
     }
 

@@ -13,13 +13,13 @@ import static org.junit.Assert.assertTrue;
  * and not necessarily all the scenarios should end with logout
  * --Stepdef for Page URL assertions
  */
-public class CommonStepDef extends AbstractSteps{
+public class CommonStepDef extends BaseSteps{
 
 
     @Then("^I should be presented with the (.*?) page$")
     public void assert_Pages( String page) {
 
-        WaitUtils.waitForPageLoad(driver,20000,10);
+        WaitUtils.waitForPageLoad(webDriver,20000,10);
 
         // switch (page.toLowerCase()) {
         //     case "login":
@@ -33,9 +33,9 @@ public class CommonStepDef extends AbstractSteps{
         // }
 
 
-        WaitUtils.fluent_Wait_For_Partial_URL_Check(driver,30,1,page);
+        WaitUtils.fluent_Wait_For_Partial_URL_Check(webDriver,30,1,page);
 
-        String current_Url = driver.getCurrentUrl();
+        String current_Url = webDriver.getCurrentUrl();
 
         assertEquals("Current URL not same as Expected URL " ,
                       page.toLowerCase() ,
@@ -46,11 +46,11 @@ public class CommonStepDef extends AbstractSteps{
     public void assert_URL_Content( String expected_URL) {
 
         LOG.info("This is to prove that Log files can be used from super class");
-        WaitUtils.waitForPageLoad(driver,20000,10);
+        WaitUtils.waitForPageLoad(webDriver,20000,10);
 
-        WaitUtils.fluent_Wait_For_Partial_URL_Check(driver,30,1, expected_URL);
+        WaitUtils.fluent_Wait_For_Partial_URL_Check(webDriver,30,1, expected_URL);
 
-        String current_Url = driver.getCurrentUrl();
+        String current_Url = webDriver.getCurrentUrl();
 
         assertTrue("Current URL does not contain expected url " ,
                       current_Url.toLowerCase().contains(expected_URL)) ;

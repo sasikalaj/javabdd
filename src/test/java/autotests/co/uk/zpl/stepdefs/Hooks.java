@@ -31,13 +31,13 @@ public class Hooks {
     Config config;
 
     @Autowired
-    WebDriver driver;
+    WebDriver webDriver;
 
 
     @Before
     public  void set_Up()
     {
-        driver.manage().deleteAllCookies();
+        webDriver.manage().deleteAllCookies();
         System.out.println("Inside hooks set_up");
     }
 
@@ -45,7 +45,7 @@ public class Hooks {
     public void logout_Step()
     {
         System.out.println("Inside hooks logout_step config homepage URL : " + config.homePageURL);
-        driver.manage().deleteAllCookies();
+        webDriver.manage().deleteAllCookies();
 
     }
 
@@ -53,10 +53,10 @@ public class Hooks {
     public void tearDown(  Scenario scenario) throws IOException {
         if (scenario.isFailed()) {
             System.out.println("Inside hooks logout_step");
-            final byte[] screenshot = ((TakesScreenshot) driver)
+            final byte[] screenshot = ((TakesScreenshot) webDriver)
                     .getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenshot, "image/png"); //stick it in the report
-            File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            File scrFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scrFile, new File("TearDownScreenShot.jpg"));
 
         }

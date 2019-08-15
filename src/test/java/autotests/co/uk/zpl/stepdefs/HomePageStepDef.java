@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
  * Created by sasikalaj45 07/08/2019.
  * This class contains stepdefs related to HomePage
  */
-public class HomePageStepDef extends AbstractSteps {
+public class HomePageStepDef extends BaseSteps {
 
 @Given("^I am already in Homepage$")
 public void i_am_already_in_Homepage() throws Throwable {
@@ -26,24 +26,24 @@ public void i_am_already_in_Homepage() throws Throwable {
         {
             throw new RuntimeException( "Exception during wait in the add_Item_to_Basket" + e );
         }
-        WaitUtils.waitForPageLoad(homePage.driver, 1, 1);
+        WaitUtils.waitForPageLoad(homePage.webDriver, 1, 1);
         assertEquals("Actual url does not match expected URL", 
                      config.homePageURL,
-                     driver.getCurrentUrl().toLowerCase().trim()) ;
+                     webDriver.getCurrentUrl().toLowerCase().trim()) ;
 }
 
-@Then("^I see for sale channel tab on the homepage$")
+@Then("^I see search text field on the homepage$")
 public void i_see_for_sale_channel_tab_on_the_homepage() throws Throwable {
-    WebElement element = homePage.find_for_sale_tab;
+    WebElement element = homePage.homepage_search_field;
     WaitUtils.fluent_Wait_For_Element_Displayed(element, 15, 1);
     assertTrue("Actual url does not match expected URL", 
                 element.isDisplayed());
                     
 }
 
-@When("^I enter (.*?) in the location field$")
-public void i_enter_London_in_the_location_field(String location) throws Throwable {
-    homePage.enter_location(location); 
+@When("^I enter (.*?) in the search field$")
+public void i_enter_value_in_the_search_field(String location) throws Throwable {
+    homePage.enter_search_text(location);
 }
 
 @When("^I hit the search button$")

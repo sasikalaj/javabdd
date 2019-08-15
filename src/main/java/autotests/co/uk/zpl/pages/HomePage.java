@@ -14,32 +14,29 @@ import static java.lang.Thread.sleep;
  * This class includes
  * --Homepage functions
  */
-public class HomePage extends Pages{
+public class HomePage extends BasePage {
 
-    @FindBy(id  = "search-tabs-for-sale")
-    public WebElement find_for_sale_tab;
+    @FindBy(className  = "gLFyf")
+    public WebElement homepage_search_field;
 
-    @FindBy(id  = "search-input-location")
-    public WebElement search_input_location;
-
-    @FindBy(id  =  "search-submit")
-    public WebElement find_search_button;
+    @FindBy(name  =  "btnK")
+    public WebElement homepage_search_button;
 
     @Autowired
-    public HomePage (WebDriver driver) {
-
-        super(driver);
+    public HomePage (WebDriver webDriver) {
+        super(webDriver);
+        System.out.println("Driver hash in Homepage: " + webDriver);
         System.out.println("Inside homepage driver");
     }
 
-    public void enter_location(String location) {
-        search_input_location.sendKeys(location);
+    public void enter_search_text(String search_text) {
+        homepage_search_field.sendKeys(search_text);
     }
 
     public void enter_search() {
         WaitUtils.pause(10);
-        System.out.println("Text of search field" + driver.findElement(By.id("search-input-location")).getText());
-        find_search_button.click();
+        System.out.println("Text of search field" + webDriver.findElement(By.id("search-input-location")).getText());
+        homepage_search_button.click();
         System.out.println("Config base urk inside Homepage" + config.base_URL);
         config.base_URL = "www.google.co.uk";
     }

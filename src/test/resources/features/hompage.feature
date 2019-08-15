@@ -9,7 +9,7 @@ Feature: Homepage search filters
 
   @solo
   Scenario: Basic channels in the Homepage
-     Then I see for sale channel tab on the homepage
-     When I enter London in the location field
+     Then I see search text field on the homepage
+     When I enter science in the search field
       And I hit the search button
      Then Url should contain /for-sale/property/london
