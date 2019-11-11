@@ -1,0 +1,30 @@
+2019-08-15 19:50:57 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@28b46423: startup date [Thu Aug 15 19:50:57 BST 2019]; root of context hierarchy
+2019-08-15 19:50:57 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [cucumber.xml]
+2019-08-15 19:50:58 INFO  BrowserFactory:115 - browser chrome
+2019-08-15 19:51:04 INFO  WaitUtils:98 - Element displayed? : true
+2019-08-15 19:52:17 INFO  ClassPathXmlApplicationContext:982 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@28b46423: startup date [Thu Aug 15 19:50:57 BST 2019]; root of context hierarchy
+2019-08-15 20:04:38 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@776a6d9b: startup date [Thu Aug 15 20:04:38 BST 2019]; root of context hierarchy
+2019-08-15 20:04:38 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [cucumber.xml]
+2019-08-15 20:04:39 INFO  BrowserFactory:115 - browser chrome
+2019-08-15 20:04:45 INFO  WaitUtils:98 - Element displayed? : true
+2019-08-15 20:05:57 INFO  ClassPathXmlApplicationContext:982 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@776a6d9b: startup date [Thu Aug 15 20:04:38 BST 2019]; root of context hierarchy
+2019-08-15 20:09:49 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6b6776cb: startup date [Thu Aug 15 20:09:49 BST 2019]; root of context hierarchy
+2019-08-15 20:09:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [cucumber.xml]
+2019-08-15 20:09:50 INFO  BrowserFactory:115 - browser chrome
+2019-08-15 20:09:56 INFO  WaitUtils:98 - Element displayed? : true
+2019-08-15 20:11:08 INFO  ClassPathXmlApplicationContext:982 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@6b6776cb: startup date [Thu Aug 15 20:09:49 BST 2019]; root of context hierarchy
+2019-08-15 20:14:34 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6b6776cb: startup date [Thu Aug 15 20:14:34 BST 2019]; root of context hierarchy
+2019-08-15 20:14:34 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [cucumber.xml]
+2019-08-15 20:14:34 INFO  BrowserFactory:115 - browser chrome
+2019-08-15 20:14:40 INFO  WaitUtils:98 - Element displayed? : true
+2019-08-15 20:15:53 INFO  ClassPathXmlApplicationContext:982 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@6b6776cb: startup date [Thu Aug 15 20:14:34 BST 2019]; root of context hierarchy
+2019-08-15 20:17:10 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@28b46423: startup date [Thu Aug 15 20:17:10 BST 2019]; root of context hierarchy
+2019-08-15 20:17:10 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [cucumber.xml]
+2019-08-15 20:17:10 INFO  BrowserFactory:115 - browser chrome
+2019-08-15 20:17:17 INFO  WaitUtils:98 - Element displayed? : true
+2019-08-15 20:18:29 INFO  ClassPathXmlApplicationContext:982 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@28b46423: startup date [Thu Aug 15 20:17:10 BST 2019]; root of context hierarchy
+2019-08-15 20:21:00 INFO  ClassPathXmlApplicationContext:581 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@28b46423: startup date [Thu Aug 15 20:21:00 BST 2019]; root of context hierarchy
+2019-08-15 20:21:00 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [cucumber.xml]
+2019-08-15 20:21:01 INFO  BrowserFactory:115 - browser chrome
+2019-08-15 20:21:07 INFO  WaitUtils:98 - Element displayed? : true
+2019-08-15 20:22:19 INFO  ClassPathXmlApplicationContext:982 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@28b46423: startup date [Thu Aug 15 20:21:00 BST 2019]; root of context hierarchy
