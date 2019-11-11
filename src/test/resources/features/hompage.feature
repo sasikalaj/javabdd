@@ -10,6 +10,6 @@ Feature: Homepage search filters
   @solo
   Scenario: Basic channels in the Homepage
      Then I see search text field on the homepage
-     When I enter science in the search field
+     When I enter science museum london imax price tickets in the search field
       And I hit the search button
-     Then Url should contain /for-sale/property/london
+     Then Url should contain science

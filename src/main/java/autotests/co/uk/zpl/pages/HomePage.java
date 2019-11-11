@@ -19,7 +19,7 @@ public class HomePage extends BasePage {
     @FindBy(className  = "gLFyf")
     public WebElement homepage_search_field;
 
-    @FindBy(name  =  "btnK")
+    @FindBy(className =  "gNO89b")
     public WebElement homepage_search_button;
 
     @Autowired
@@ -35,7 +35,7 @@ public class HomePage extends BasePage {
 
     public void enter_search() {
         WaitUtils.pause(10);
-        System.out.println("Text of search field" + webDriver.findElement(By.id("search-input-location")).getText());
+        System.out.println("Text of search field" + webDriver.findElement(By.className("gNO89b")).getText());
         homepage_search_button.click();
         System.out.println("Config base urk inside Homepage" + config.base_URL);
         config.base_URL = "www.google.co.uk";
