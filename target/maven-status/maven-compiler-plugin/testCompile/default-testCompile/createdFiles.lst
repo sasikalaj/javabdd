@@ -1,0 +1,5 @@
+autotests\co\uk\zpl\stepdefs\CommonStepDef.class
+autotests\co\uk\zpl\stepdefs\RunFile.class
+autotests\co\uk\zpl\stepdefs\HomePageStepDef.class
+autotests\co\uk\zpl\stepdefs\BaseSteps.class
+autotests\co\uk\zpl\stepdefs\Hooks.class

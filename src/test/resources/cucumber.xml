@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+   <beans xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.3.xsd"
+          xmlns:context="http://www.springframework.org/schema/context"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.springframework.org/schema/beans">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="autotests.co.uk.zpl" />
+
+<!--    <bean class="autotests.co.uk.zpl.pages.BasePage" scope="cucumber-glue" />-->
+    <bean class="autotests.co.uk.zpl.pages.HomePage" scope="cucumber-glue" />
+    <bean class="autotests.co.uk.zpl.pages.Config" scope="cucumber-glue" />
+    <bean class="autotests.co.uk.zpl.pages.LoginPage" scope="cucumber-glue" />
+<!--    <bean class="autotests.co.uk.zpl.stepdefs.Hooks" scope="cucumber-glue" />-->
+</beans>
